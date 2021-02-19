@@ -10,9 +10,9 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
-	<h1>Ви зареєстровані</h1>
+	<h1>Ви успішно залогувалися</h1>
 		<br>
-	<button type = "button" onClick= "location.href = 'login.jsp'">Увійти</button>
+
 
 
 

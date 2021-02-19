@@ -7,9 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dao.MagazineDao;
 import domain.Magazine;
 import domain.User;
+import impl.UserServiceImpl;
+import service.UserService;
 import utils.ConnectionUtils;
 
 public class MagazineDaoImpl implements MagazineDao{
@@ -19,6 +23,8 @@ public class MagazineDaoImpl implements MagazineDao{
 	private static String UPDATE_BY_ID = "update magazine set magazine_name =?, magazine_pages=?, magazine_price=? where id= ?";
 	private static String DELETE_BY_ID = "delete from magazine where id = ?";
 	private static String READ_ALL = "select * from magazine";
+	
+	private static Logger LOGGER = Logger.getLogger(MagazineDaoImpl.class);
 
 	private Connection connection;
 	private PreparedStatement preparedStatement;
@@ -41,11 +47,12 @@ public class MagazineDaoImpl implements MagazineDao{
 			magazine.setId(rs.getInt(1));
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return magazine;
 	}
+
 
 	@Override
 	public Magazine read(Integer id) {
@@ -63,7 +70,7 @@ public class MagazineDaoImpl implements MagazineDao{
 
 			magazine = new Magazine(magazine_name, magazine_pages, magazine_price);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return magazine;
@@ -79,7 +86,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement.setInt(4, magazine.getId());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		return magazine;
 	}
@@ -92,7 +99,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		
 	}
@@ -112,7 +119,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			}
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return listOfMagazine;

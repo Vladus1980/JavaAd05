@@ -3,8 +3,11 @@ package impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dao.MagazineDao;
 import daoImpl.MagazineDaoImpl;
+
 import domain.Magazine;
 import service.MagazineService;
 
@@ -12,23 +15,31 @@ public class MagazineServiceImpl implements MagazineService{
 	
 	private MagazineDao magazineDao;
 	
-	public MagazineServiceImpl() {
+	private static Logger LOGGER = Logger.getLogger(MagazineServiceImpl.class);
+	
+	private static MagazineServiceImpl magazineServiceImpl;
+	
+	private MagazineServiceImpl() {
 	
 		try {
 			magazineDao = new MagazineDaoImpl();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error(e);
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error(e);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error(e);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
+	}
+	
+	public static MagazineService getMagazineService() {
+		if (magazineServiceImpl == null) {
+			magazineServiceImpl = new MagazineServiceImpl();
+		}
+		
+		return magazineServiceImpl;
 	}
 
 	@Override

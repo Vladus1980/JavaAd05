@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.User;
+import impl.UserServiceImpl;
 import service.UserService;
 
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private UserService userService = UserServiceImpl.getUserService();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -22,21 +24,16 @@ public class LoginServlet extends HttpServlet {
 		String user_email = request.getParameter("user_email");
 		String password = request.getParameter("user_pass");
 		
-//		UserService userService = UserService.getUserService();
-//		User user = userService.getUser(user_email);
-//		
-//		
-//		if (user == null) {
-//			request.getRequestDispatcher("login.jsp");
-//		}
-//		
-//		if (user.getUser_pass().equals(password)) {
-//			
-//		
-//		request.setAttribute("userUser_email", user_email);
-//		request.getRequestDispatcher("cabinet.jsp");
-//		}
-//		request.getRequestDispatcher("login.jsp");
-//	}
+		User user = userService.getUserByEmail(user_email);
+		
+		
+		if (user != null && user.getUser_pass().equals(password)) {
+			
+		
+		request.setAttribute("userUser_email", user_email);
+		request.getRequestDispatcher("cabinet2.jsp").forward(request, response);
+		}
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
+	
 }

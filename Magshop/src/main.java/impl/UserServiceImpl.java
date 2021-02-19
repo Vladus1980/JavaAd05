@@ -3,32 +3,46 @@ package impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dao.UserDao;
 import daoImpl.UserDaoImpl;
 import domain.User;
 import service.UserService;
 
-public class UserSeviceImpl implements UserService {
+public class UserServiceImpl implements UserService {
 
 	private UserDao userDao;
+	
+	private static Logger LOGGER = Logger.getLogger(UserServiceImpl.class);
+	
+	private static UserServiceImpl userServiceImpl;
 
-	public UserSeviceImpl() {
+	private UserServiceImpl() {
 		try {
 			userDao = new UserDaoImpl();
 		} catch (InstantiationException e) {
 
-			e.printStackTrace();
+			LOGGER.error(e);
 		} catch (IllegalAccessException e) {
 
-			e.printStackTrace();
+			LOGGER.error(e);
 		} catch (ClassNotFoundException e) {
 
-			e.printStackTrace();
+			LOGGER.error(e);
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 	}
+	public static UserService getUserService() {
+		if (userServiceImpl == null) {
+			userServiceImpl = new UserServiceImpl();
+		}
+		return userServiceImpl;
+		
+	}
+	
 
 	@Override
 	public User create(User t) {
@@ -58,6 +72,11 @@ public class UserSeviceImpl implements UserService {
 	public List<User> readAll() {
 
 		return userDao.readAll();
+	}
+	@Override
+	public User getUserByEmail(String user_email) {
+		
+		return userDao.getUserByEmail(user_email);
 	}
 
 }

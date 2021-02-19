@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dao.SubscriptionDao;
 import domain.Subscription;
 import domain.User;
@@ -20,6 +22,8 @@ public class SubscriptionDaoImpl implements SubscriptionDao{
 	private static String UPDATE_BY_ID = "update subscription set magazine_id =?, user_id = ?, purchare_date=? where id= ?";
 	private static String DELETE_BY_ID = "delete from subscription where id = ?";
 	private static String READ_ALL = "select * from subscription";
+	
+	private static Logger LOGGER = Logger.getLogger(SubscriptionDaoImpl.class);
 
 	private Connection connection;
 	private PreparedStatement preparedStatement;
@@ -42,7 +46,7 @@ public class SubscriptionDaoImpl implements SubscriptionDao{
 			subscription.setId(rs.getInt(1));
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return subscription;
@@ -65,7 +69,7 @@ public class SubscriptionDaoImpl implements SubscriptionDao{
 			subscription = new Subscription(magazine_id, user_id, purchasedate);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return subscription;
@@ -81,7 +85,7 @@ public class SubscriptionDaoImpl implements SubscriptionDao{
 			preparedStatement.setInt(4, subscription.getId());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		return subscription;
 	}
@@ -94,7 +98,7 @@ public class SubscriptionDaoImpl implements SubscriptionDao{
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		
 	}
@@ -114,7 +118,7 @@ public class SubscriptionDaoImpl implements SubscriptionDao{
 			}
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return listOfSubscription;

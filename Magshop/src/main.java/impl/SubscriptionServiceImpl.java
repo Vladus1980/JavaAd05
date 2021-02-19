@@ -3,31 +3,41 @@ package impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dao.SubscriptionDao;
 import daoImpl.SubscriptionDaoImpl;
 import domain.Subscription;
 import service.SubsriptionService;
+import service.UserService;
 
 public class SubscriptionServiceImpl implements SubsriptionService{
 	
 	private SubscriptionDao subscriptionDao;
 	
-	public SubscriptionServiceImpl() {
+	private static Logger LOGGER = Logger.getLogger(SubscriptionServiceImpl.class);
+	
+	private static SubscriptionServiceImpl subscriptionServiceImpl;
+	
+	private SubscriptionServiceImpl() {
 		try {
 			subscriptionDao = new SubscriptionDaoImpl();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error(e);
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error(e);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error(e);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
+	}
+	
+	public static SubsriptionService getSubscriptionService() {
+		if (subscriptionServiceImpl == null) {
+			subscriptionServiceImpl = new SubscriptionServiceImpl();
+		}
+		return subscriptionServiceImpl;
 	}
 
 	@Override

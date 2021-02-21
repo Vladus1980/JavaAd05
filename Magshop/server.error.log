@@ -1,0 +1,1 @@
+2021-02-21 14:45:08 ERROR UserDaoImpl:52 - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '10@gmail.com' for key 'user.user_email'

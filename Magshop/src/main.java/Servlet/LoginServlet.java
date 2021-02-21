@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Dto.UserLogin;
 import domain.User;
 import impl.UserServiceImpl;
 import service.UserService;
@@ -22,12 +23,16 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String user_email = request.getParameter("user_email");
-		String password = request.getParameter("user_pass");
+		String user_pass = request.getParameter("user_pass");
 		
 		User user = userService.getUserByEmail(user_email);
 		
 		
-		if (user != null && user.getUser_pass().equals(password)) {
+		if (user != null && user.getUser_pass().equals(user_pass)) {
+			UserLogin userLogin = new UserLogin();
+			userLogin.destinationUrl = "cabinet.jsp";
+			userLogin.userEmail = user.getUser_email();
+			
 			
 		
 		request.setAttribute("userUser_email", user_email);

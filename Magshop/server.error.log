@@ -1,1 +1,9 @@
 2021-02-21 14:45:08 ERROR UserDaoImpl:52 - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '10@gmail.com' for key 'user.user_email'
+2021-02-23 12:33:49 ERROR UserDaoImpl:154 - java.sql.SQLException: Illegal operation on empty result set.
+2021-02-28 16:04:01 ERROR MagazineDaoImpl:50 - java.sql.SQLIntegrityConstraintViolationException: Column 'magazine_name' cannot be null
+2021-02-28 16:06:44 ERROR MagazineDaoImpl:50 - java.sql.SQLIntegrityConstraintViolationException: Column 'magazine_name' cannot be null
+2021-02-28 16:10:51 ERROR MagazineDaoImpl:50 - java.sql.SQLIntegrityConstraintViolationException: Column 'magazine_name' cannot be null
+2021-02-28 16:13:41 ERROR MagazineDaoImpl:50 - java.sql.SQLIntegrityConstraintViolationException: Column 'magazine_name' cannot be null
+2021-02-28 16:19:03 ERROR MagazineDaoImpl:50 - java.sql.SQLIntegrityConstraintViolationException: Column 'magazine_name' cannot be null
+2021-02-28 16:19:17 ERROR MagazineDaoImpl:50 - java.sql.SQLException: Before start of result set
+2021-02-28 16:21:05 ERROR MagazineDaoImpl:50 - java.sql.SQLException: Before start of result set

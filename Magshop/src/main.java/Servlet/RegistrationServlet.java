@@ -46,7 +46,9 @@ public class RegistrationServlet extends HttpServlet {
 	 	
 //		HttpSession session = request.getSession(true);
 //		session.setAttribute("userUser_email", user_email);
-		
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write("Success");
 	 	request.getRequestDispatcher("cabinet.jsp").forward(request, response);
 	 	
 	} 

@@ -20,6 +20,20 @@
 
   	<servlet-class>Servlet.LoginServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	
+  	<servlet-name>ProductController</servlet-name>
+  	<servlet-class>Servlet.ProductController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>Logout</display-name>
+  	<servlet-name>Logout</servlet-name>
+  	<servlet-class>Servlet.Logout</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegistrationServlet</servlet-name>
   	<url-pattern>/RegistrationServlet</url-pattern>
@@ -27,6 +41,14 @@
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
   	<url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ProductController</servlet-name>
+  	<url-pattern>/ProductController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Logout</servlet-name>
+  	<url-pattern>/Logout</url-pattern>
   </servlet-mapping>
  
   

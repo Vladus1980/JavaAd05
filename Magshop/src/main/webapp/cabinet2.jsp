@@ -24,8 +24,17 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
-	<h1>Ви успішно залогувалися</h1>
-		<br>
+    <div class="wrapper">
+        <header>
+            <jsp:include page="Header.jsp"></jsp:include>
+        </header>
+
+        <main>
+            <div class="container-fluid">
+                <div class="row magazineCards"></div>
+            </div>
+        </main>
+    </div>
 
 
 

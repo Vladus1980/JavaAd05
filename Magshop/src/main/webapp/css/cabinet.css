@@ -1,0 +1,18 @@
+
+
+.wrapper {	
+	min-height: 100vh;	
+}
+
+main {	
+    padding: 0 50px;
+    padding-bottom: 150px;    
+}
+
+
+
+.card {
+    margin-bottom: 15px;
+    border-radius: 0;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
